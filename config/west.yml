@@ -9,16 +9,25 @@ manifest:
     - name: englmaxi
       url-base: https://github.com/englmaxi
   projects:
-    - name: mario-peripheral-animation
-      remote: gpeye
-      revision: main 
+    # Mario walking animation for OLED peripheral displays (nice_view_custom shield)
+    # Repo: https://github.com/GPeye/mario-peripheral-animation
+    # Uncomment and use 'nice_view_custom' shield in build.yaml to enable
+    # - name: mario-peripheral-animation
+    #   remote: gpeye
+    #   revision: main
+
     - name: zmk
       remote: zmkfirmware
       revision: v0.3.0
       import: app/west.yml
-    - name: prospector-zmk-module                 # <--- and these
-      remote: tokyo2006                          # <---
-      revision: micro_spi2  
+
+    # Prospector module for color LCD dongle displays (not needed for B&W OLED)
+    # Repo: https://github.com/carrefinho/prospector-zmk-module
+    # Features: layer roller, peripheral battery bar, connection status
+    # - name: prospector-zmk-module
+    #   remote: carrefinho  # (was tokyo2006 fork)
+    #   revision: main
+
     - name: zmk-dongle-display
       remote: englmaxi
       revision: main
