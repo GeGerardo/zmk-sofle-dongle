@@ -36,8 +36,9 @@ This repository is structured like a standard ZMK “user config” repo as desc
 Key locations:
 
 - `build.yaml`: GitHub Actions build matrix (which boards/shields get built)
-- `config/`: keymap and Kconfig options (`.keymap` / `.conf`)
-- `boards/shields/`: custom shield definitions (hardware + overlays)
+- `config/eyelash_sofle_central_dongle.keymap`: your keymap (must match shield name)
+- `config/eyelash_sofle_central_dongle.conf`: Kconfig options
+- `boards/shields/`: shield definitions (hardware overlays, default keymap)
 - `config/west.yml` + `zephyr/module.yml`: pin ZMK version and include extra Zephyr/ZMK modules
 
 ## Live keymap changes (ZMK Studio)
