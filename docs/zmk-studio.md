@@ -43,9 +43,18 @@ Tip: If you are connected to the computer over both USB and BLE endpoints, set t
 From the official ZMK docs:
 - Once you start using ZMK Studio to manage your keymap, later edits to the `.keymap` file will **not** apply unless you perform **“Restore Stock Settings”** in ZMK Studio.
 
-Practical guidance:
-- If you intend to use ZMK Studio long-term, treat `.keymap` as the “baseline/stock” layout.
+### When to use "Restore Stock Settings"
+
+| Scenario | Action needed |
+|----------|---------------|
+| Changed `.keymap` file and reflashed | **Restore Stock Settings** in ZMK Studio |
+| Made changes only in ZMK Studio | No action needed |
+| Fresh flash on new device | No action needed |
+
+### Practical guidance
+
+- If you intend to use ZMK Studio long-term, treat `.keymap` as the "baseline/stock" layout.
 - Use `.keymap` edits mainly to:
   - add `&studio_unlock`
   - add extra empty `reserved` layers (so Studio can use more layers)
-  - make changes that Studio cannot do
+  - make changes that Studio cannot do (new behaviors, encoder bindings, etc.)

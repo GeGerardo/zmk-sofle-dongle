@@ -10,12 +10,23 @@ There are two main ways to change keys:
 - Required when you change features/settings beyond what ZMK Studio can edit.
 - Examples: enabling/disabling features, changing devicetree/overlays, changing what behaviors are available, changing sensors/encoders configuration, etc.
 
+## File naming convention
+
+ZMK requires config files to match the **shield name** exactly:
+
+| Shield (in build.yaml) | Config file |
+|------------------------|-------------|
+| `eyelash_sofle_central_dongle` | `config/eyelash_sofle_central_dongle.keymap` |
+| `eyelash_sofle_central_dongle` | `config/eyelash_sofle_central_dongle.conf` |
+
+The shield's default keymap (`boards/shields/eyelash_sofle/eyelash_sofle.keymap`) is used as a fallback if no matching config file is found.
+
 ## Editing the keymap in this repo
 
-- Primary keymap file used for customization: [config/eyelash_sofle.keymap](../config/eyelash_sofle.keymap)
-- Configuration options live in: [config/eyelash_sofle.conf](../config/eyelash_sofle.conf)
+- Primary keymap file: [config/eyelash_sofle_central_dongle.keymap](../config/eyelash_sofle_central_dongle.keymap)
+- Configuration options: [config/eyelash_sofle_central_dongle.conf](../config/eyelash_sofle_central_dongle.conf)
 
-Tip: some shield default keymaps also exist under `boards/shields/**`, but for this repo you should typically edit the files under `config/`.
+Tip: Only the **central device** (dongle) needs a keymap. The left/right peripherals just send key positions to the central.
 
 ## Build with GitHub Actions (recommended)
 
@@ -56,7 +67,25 @@ Security note:
 
 Important:
 - Don’t delete files from the bootloader drive.
-- For split keyboards, flashing the keymap often only requires the “central” device. In **dongle mode**, the “central” device is the **dongle/receiver**, not the left half.
+- After flashing the dongle, use **"Restore Stock Settings"** in ZMK Studio to load the new keymap (if you've used Studio before).
+
+## When to flash each device
+
+| Change | Dongle | Left | Right |
+|--------|--------|------|-------|
+| Keymap changes | ✅ | ❌ | ❌ |
+| Display settings (nice_view/OLED) | ✅ (OLED) | ✅ | ✅ |
+| Peripheral config (sleep timeout, etc.) | ❌ | ✅ | ✅ |
+| Bluetooth/pairing issues | ✅ | ✅ | ✅ |
+
+## When to use `settings_reset`
+
+Flash `settings_reset.uf2` **only** when:
+- Bluetooth pairing is broken or devices won't connect
+- Switching between dongle mode and direct keyboard mode
+- First-time setup after receiving hardware
+
+**Not needed** for normal keymap updates.
 
 ## If a build fails
 
