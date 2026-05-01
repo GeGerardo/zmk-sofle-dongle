@@ -57,4 +57,4 @@ Important note from the official docs: once you start managing the keymap via ZM
 
 ## Keymap diagram
 
-<img src="keymap-drawer/eyelash_sofle.svg" >
+<img src="keymap-drawer/eyelash_sofle_central_dongle.svg" >
