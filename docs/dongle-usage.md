@@ -2,8 +2,8 @@
 
 This keyboard is configured to run in **dongle mode**:
 
-- The **dongle/receiver** is the ZMK “central” device.
-- The **left + right halves** are ZMK “peripherals”.
+- The **dongle/receiver** is the ZMK "central" device.
+- The **left + right halves** are ZMK "peripherals".
 - Keystrokes are sent from the halves to the dongle first, then forwarded to your computer via **USB** or **Bluetooth**.
 
 ## What changes in dongle mode
@@ -19,33 +19,52 @@ This keyboard is configured to run in **dongle mode**:
   - With the dongle connected via USB, **double-press reset** to enter bootloader mode.
   - A USB drive will appear on your computer. Copy the new firmware file (`.uf2`) onto it.
 
+## OLED display
+
+The dongle has a small OLED display. It shows:
+- Battery levels for the dongle, left half, and right half
+- Current connection state (USB or Bluetooth)
+- Active layer
+
+> The macOS modifier logo can be enabled by uncommenting `CONFIG_ZMK_DONGLE_DISPLAY_MAC_MODIFIERS=y` in `config/eyelash_sofle_central_dongle.conf`.
+
 ## Suggested placement
 
 - Use the included stand to angle the dongle on the desk.
 - Optionally mount it on top of your monitor (the dongle includes a magnet; a metal patch can be attached to the monitor).
 
-## First-time setup / re-pairing (recommended reset sequence)
+## First-time setup / re-pairing
 
-If you purchased the keyboard earlier and added a dongle later (or if pairing is broken), do a full settings reset:
+See the [README](../README.md#how-to-flash-firmware) for the full reset and re-pairing sequence.
 
-1. Flash the **`settings_reset`** firmware to:
-   - dongle/receiver
-   - left half
-   - right half
-2. Then flash the normal firmware to each device:
-   - dongle: the **dongle firmware**
-   - left: **left firmware**
-   - right: **right firmware**
+If pairing is broken or devices won't connect, always do the full sequence: flash `settings_reset` to all three devices first, then flash the normal firmware to each.
 
-Notes:
-- The `settings_reset` firmware does not distinguish left/right; it’s just to clear stored pairing/settings.
-- After flashing, power both halves and the dongle; they should pair automatically.
+## Live keymap changes (ZMK Studio)
 
-## Using ZMK Studio (live keymap changes)
+Connect the **dongle** via USB and follow the [ZMK Studio guide](zmk-studio.md).
 
-If you are using ZMK Studio for live keymap updates, connect the **dongle** via USB and follow the ZMK Studio guide in [ZMK Studio](zmk-studio.md).
+## Troubleshooting
 
-## Switching from dongle mode to direct keyboard mode
+**Halves won't pair with the dongle after flashing**
+- Make sure you flashed `settings_reset` to all three devices before flashing the normal firmware.
+- Power cycle all devices after flashing.
+
+**Dongle connects to the computer but keypresses aren't registering**
+- Check that both halves are powered on.
+- Move the halves closer to the dongle; BLE range can be limited by desk obstacles.
+
+**OLED is blank**
+- The display turns off when the keyboard is idle. Press any key to wake it.
+- If it stays blank after activity, reflash the dongle firmware.
+
+**One half is not responding**
+- Try power cycling that half (flip its power switch off and back on).
+- If it still doesn't respond, flash `settings_reset` to that half only, then reflash its normal firmware.
+
+---
+
+<details>
+<summary>Switching from dongle mode to direct keyboard mode</summary>
 
 If you want to use the keyboard without the dongle (left half as USB/BT central):
 
@@ -65,16 +84,4 @@ If you want to use the keyboard without the dongle (left half as USB/BT central)
 
 4. **Flash `settings_reset`** to both halves first, then flash the new firmware.
 
-## Understanding ZMK shields
-
-A "shield" in ZMK defines the hardware attached to the controller board (nice_nano). Each shield name corresponds to:
-- An overlay file defining GPIO pins, matrix, sensors
-- A default keymap
-- Configuration defaults
-
-ZMK looks for user config files matching the shield name exactly:
-- Shield: `eyelash_sofle_central_dongle` → Config: `config/eyelash_sofle_central_dongle.keymap`
-
-For more details, see the official ZMK documentation:
-- [Shield development](https://zmk.dev/docs/development/hardware-integration/new-shield)
-- [Customization](https://zmk.dev/docs/customization)
+</details>

@@ -53,7 +53,7 @@
         compatible = "zmk,keymap";
 
         // -----------------------------------------------------------------------------------------
-        // Layer 0 — Base (QWERTY)
+        // Layer 0 - Base (QWERTY)
         // [ and ] on outer column (Shift gives { and })
         // CAPS = tap ESC / hold CTRL
         // Right thumb: ENTER | mo3(Numpad) | mo2(Sys) | RSHIFT | BSPC
@@ -72,7 +72,7 @@
         };
 
         // -----------------------------------------------------------------------------------------
-        // Layer 1 — Sym + Nav  (hold mo1 — left thumb)
+        // Layer 1 - Sym + Nav  (hold mo1 - left thumb)
         // Left : symbols   |   Right : navigation + F-keys
         // Joystick → mouse movement   |   Encoder push → left click
         // -----------------------------------------------------------------------------------------
@@ -90,7 +90,7 @@
         };
 
         // -----------------------------------------------------------------------------------------
-        // Layer 2 — Sys + RGB  (hold mo2 — right thumb)
+        // Layer 2 - Sys + RGB  (hold mo2 - right thumb)
         // Left : Bluetooth / output   |   Right : full RGB control (all 11 behaviors)
         // -----------------------------------------------------------------------------------------
         layer_2 {
@@ -107,7 +107,7 @@
         };
 
         // -----------------------------------------------------------------------------------------
-        // Layer 3 — Numpad  (hold mo3 — right thumb)
+        // Layer 3 - Numpad  (hold mo3 - right thumb)
         // Left hand types numbers while right thumb holds mo3
         // Row layout (top→bottom): 7 8 9 | 4 5 6 | 1 2 3
         // Left thumb: DOT (LEFT_ALT slot) and 0 (SPACE slot)
