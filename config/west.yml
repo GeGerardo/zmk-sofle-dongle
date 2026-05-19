@@ -4,15 +4,24 @@ manifest:
       url-base: https://github.com/zmkfirmware
     - name: gpeye
       url-base: https://github.com/GPeye
+    - name: rockyzhang24
+      url-base: https://github.com/rockyzhang24
     - name: tokyo2006
       url-base: https://github.com/tokyo2006
     - name: englmaxi
       url-base: https://github.com/englmaxi
   projects:
-    # Mario walking animation for OLED peripheral displays (nice_view_custom shield)
+    # Mario walking animation for nice_view peripheral displays (nice_view_custom shield)
     # Repo: https://github.com/GPeye/mario-peripheral-animation
-    - name: mario-peripheral-animation
-      remote: gpeye
+    # To use: uncomment below and set shield to nice_view_custom in build.yaml
+    # - name: mario-peripheral-animation
+    #   remote: gpeye
+    #   revision: main
+
+    # Zelda animation for nice_view peripheral displays (nice_view_zelda shield)
+    # Repo: https://github.com/rockyzhang24/zmk-nice-view-zelda
+    - name: zmk-nice-view-zelda
+      remote: rockyzhang24
       revision: main
 
     - name: zmk
